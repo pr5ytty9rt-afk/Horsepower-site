@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horsepower Retail Advisory — Find the horsepower in your retail business</title>
+<meta name="description" content="Retail strategy & advisory built by operators. Horsepower Retail Advisory helps retailers and consumer brands convert operating experience into measurable performance.">
+
+<!--
+  ============================================================
+  HORSEPOWER RETAIL ADVISORY — working draft
+  ------------------------------------------------------------
+  This is a real, deployable single file, but a few things are
+  PLACEHOLDERS for Matt to replace before going live. Search for
+  "REPLACE:" to find each one:
+    REPLACE: contact email (hello@horsepowerretail.com — confirm domain)
+    REPLACE: Tim Pardue bio
+    REPLACE: John Marshall bio
+    REPLACE: proof points in "Operators, not slideware"
+    REPLACE: the Oval Tach badge SVG with the finalized logo art
+    REPLACE: draft practice-area copy — confirm the service lines
+  Nothing here invents clients, testimonials, stats, or credentials.
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314161C'/%3E%3Cellipse cx='32' cy='32' rx='22' ry='16' fill='none' stroke='%23F4F4F2' stroke-width='2.5'/%3E%3Cpath d='M22 40 A14 14 0 0 1 42 40' fill='none' stroke='%23E1341A' stroke-width='3' stroke-linecap='round'/%3E%3Cline x1='32' y1='34' x2='41' y2='25' stroke='%23F4F4F2' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='34' r='3' fill='%23E1341A'/%3E%3C/svg%3E">
+
+<style>
+  :root{
+    --ink:#14161C;
+    --ink-2:#1B1E27;
+    --ink-3:#252A35;
+    --paper:#F4F4F2;
+    --paper-2:#ECECE8;
+    --redline:#E1341A;
+    --amber:#F2A93B;
+    --steel:#6B7078;
+    --steel-lt:#9CA1A9;
+    --line:#DEDEDB;
+
+    --font-display:'Archivo', system-ui, sans-serif;
+    --font-body:'Instrument Sans', system-ui, sans-serif;
+    --font-mono:'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    background:var(--paper);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,48px);}
+  .section{padding:clamp(66px,9vw,124px) 0;}
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:.72rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--redline);
+    font-weight:500;
+    display:inline-flex;
+    align-items:center;
+    gap:.7em;
+  }
+  .eyebrow::before{
+    content:"";width:26px;height:1px;background:var(--redline);display:inline-block;opacity:.85;
+  }
+
+  h1,h2,h3{font-family:var(--font-display);margin:0;line-height:1.02;}
+  .h2{font-size:clamp(1.9rem,3.6vw,3rem);font-weight:800;letter-spacing:-.02em;}
+  .lead{font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--steel);max-width:56ch;}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:.6em;
+    font-family:var(--font-display);font-weight:700;font-size:.95rem;letter-spacing:.005em;
+    padding:.85em 1.35em;border-radius:2px;border:1.5px solid transparent;cursor:pointer;
+    transition:transform .15s ease, background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .btn-primary{background:var(--redline);color:var(--paper);}
+  .btn-primary:hover{transform:translateY(-2px);background:#c92c14;}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink);}
+  .btn-ghost:hover{transform:translateY(-2px);background:var(--ink);color:var(--paper);}
+  .btn-ghost-lt{background:transparent;color:var(--paper);border-color:rgba(244,244,242,.4);}
+  .btn-ghost-lt:hover{transform:translateY(-2px);background:var(--paper);color:var(--ink);border-color:var(--paper);}
+  .btn .arw{transition:transform .18s ease;}
+  .btn:hover .arw{transform:translateX(3px);}
+
+  a:focus-visible,.btn:focus-visible{outline:2.5px solid var(--amber);outline-offset:3px;}
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    transition:background .3s ease, box-shadow .3s ease, border-color .3s ease;
+    border-bottom:1px solid transparent;
+  }
+  .nav.scrolled{background:var(--ink);box-shadow:0 1px 0 rgba(0,0,0,.4);border-bottom-color:var(--ink-3);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px;}
+  .brand{display:flex;align-items:center;gap:12px;color:var(--paper);}
+  .brand .badge{width:44px;height:34px;flex:none;}
+  .brand-txt{display:flex;flex-direction:column;line-height:1;}
+  .brand-txt .b1{font-family:var(--font-display);font-weight:800;font-size:1.02rem;letter-spacing:.02em;}
+  .brand-txt .b2{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.28em;color:var(--steel-lt);margin-top:4px;text-transform:uppercase;}
+  .nav-links{display:flex;align-items:center;gap:34px;}
+  .nav-links a{font-size:.9rem;color:var(--paper);opacity:.8;transition:opacity .2s ease;font-weight:500;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{display:flex;align-items:center;gap:20px;}
+  .nav .btn{padding:.6em 1.05em;font-size:.85rem;}
+
+  /* ---------- Hero ---------- */
+  .hero{background:var(--ink);color:var(--paper);position:relative;overflow:hidden;padding:calc(74px + clamp(40px,7vw,80px)) 0 clamp(56px,8vw,96px);}
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(1100px 600px at 82% 18%, rgba(242,169,59,.10), transparent 60%),
+               radial-gradient(900px 500px at 12% 92%, rgba(225,52,26,.09), transparent 62%);
+    pointer-events:none;
+  }
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(24px,5vw,64px);align-items:center;}
+  .hero-copy h1{font-size:clamp(2.6rem,6vw,4.9rem);font-weight:900;letter-spacing:-.028em;}
+  .hero-copy h1 .rl{color:var(--redline);}
+  .hero-copy .lead{color:var(--steel-lt);margin:26px 0 34px;max-width:50ch;font-size:clamp(1.02rem,1.5vw,1.18rem);}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+
+  /* gauge */
+  .gauge-wrap{justify-self:center;width:100%;max-width:440px;}
+  .gauge-wrap svg{width:100%;height:auto;filter:drop-shadow(0 20px 40px rgba(0,0,0,.45));}
+  .tach-num{font-family:var(--font-mono);font-size:15px;font-weight:500;}
+  .gauge-caption{
+    display:flex;align-items:center;justify-content:center;gap:18px;margin-top:6px;
+    font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;color:var(--steel-lt);text-transform:uppercase;
+  }
+  .gauge-caption .read{color:var(--paper);font-size:1.3rem;font-weight:500;letter-spacing:.02em;}
+  .gauge-caption .redtag{display:inline-flex;align-items:center;gap:7px;color:var(--redline);}
+  .gauge-caption .redtag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--redline);box-shadow:0 0 9px rgba(225,52,26,.9);}
+
+  /* ---------- Problem ---------- */
+  .problem-head{max-width:60ch;margin-bottom:clamp(38px,5vw,60px);}
+  .problem-head h2{margin-top:20px;}
+  .stressors{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .stressor{background:var(--paper);padding:clamp(26px,3vw,38px);}
+  .stressor .n{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.16em;color:var(--steel);}
+  .stressor h3{font-size:1.22rem;font-weight:700;margin:16px 0 10px;letter-spacing:-.01em;}
+  .stressor p{margin:0;color:var(--steel);font-size:.98rem;}
+
+  /* ---------- Practice ---------- */
+  .practice{background:var(--ink);color:var(--paper);}
+  .practice .lead{color:var(--steel-lt);}
+  .practice-head{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end;margin-bottom:clamp(40px,5vw,60px);}
+  .practice-head h2{color:var(--paper);margin-top:18px;max-width:16ch;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .card{
+    background:var(--ink-2);border:1px solid var(--ink-3);border-radius:4px;padding:30px 28px 32px;
+    transition:transform .2s ease, border-color .2s ease, background .2s ease;position:relative;overflow:hidden;
+  }
+  .card::after{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--redline);transition:width .3s ease;}
+  .card:hover{transform:translateY(-4px);border-color:var(--ink-3);background:#20242e;}
+  .card:hover::after{width:100%;}
+  .card .cno{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.16em;color:var(--amber);}
+  .card h3{font-size:1.18rem;font-weight:700;margin:18px 0 12px;color:var(--paper);letter-spacing:-.01em;}
+  .card p{margin:0;color:var(--steel-lt);font-size:.95rem;line-height:1.58;}
+
+  /* ---------- How we work ---------- */
+  .steps{display:grid;gap:0;}
+  .how-head{margin-bottom:clamp(38px,5vw,58px);max-width:56ch;}
+  .how-head h2{margin-top:20px;}
+  .step{
+    display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,56px);
+    padding:clamp(30px,4vw,46px) 0;border-top:1px solid var(--line);align-items:start;
+  }
+  .step:last-child{border-bottom:1px solid var(--line);}
+  .step .sidx{font-family:var(--font-display);font-weight:800;font-size:clamp(2.4rem,4vw,3.4rem);color:var(--paper-2);-webkit-text-stroke:1.4px var(--steel);letter-spacing:-.03em;line-height:.9;}
+  .step .sbody{max-width:62ch;}
+  .step h3{font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:800;letter-spacing:-.02em;}
+  .step h3 .sub{display:block;font-family:var(--font-mono);font-weight:500;font-size:.72rem;letter-spacing:.18em;color:var(--redline);text-transform:uppercase;margin-bottom:12px;}
+  .step p{margin:14px 0 0;color:var(--steel);font-size:1.02rem;}
+
+  /* ---------- Guide / authority ---------- */
+  .guide{background:var(--redline);color:var(--paper);}
+  .guide-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center;}
+  .guide .eyebrow{color:var(--paper);}
+  .guide .eyebrow::before{background:var(--paper);}
+  .guide h2{color:var(--paper);font-size:clamp(2rem,3.6vw,3.1rem);letter-spacing:-.02em;}
+  .guide p{color:var(--paper);font-size:1.1rem;margin:22px 0 0;max-width:52ch;}
+  .guide .note{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.06em;color:rgba(244,244,242,.7);margin-top:22px;}
+  .guide-mark{justify-self:center;width:100%;max-width:280px;opacity:.96;}
+
+  /* ---------- Team ---------- */
+  .team-head{margin-bottom:clamp(38px,5vw,56px);}
+  .team-head h2{margin-top:20px;}
+  .team{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .member{border:1px solid var(--line);border-radius:4px;padding:32px 30px;background:var(--paper);transition:border-color .2s ease, transform .2s ease;}
+  .member:hover{transform:translateY(-3px);border-color:var(--steel-lt);}
+  .monogram{width:64px;height:64px;border-radius:50%;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:800;font-size:1.35rem;letter-spacing:.02em;margin-bottom:22px;}
+  .member h3{font-size:1.28rem;font-weight:800;letter-spacing:-.01em;}
+  .member .role{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;color:var(--redline);text-transform:uppercase;margin:8px 0 16px;}
+  .member p{margin:0;color:var(--steel);font-size:.96rem;}
+  .member p.ph{color:var(--steel-lt);font-style:italic;}
+
+  /* ---------- Final CTA ---------- */
+  .cta{background:var(--ink);color:var(--paper);text-align:center;}
+  .cta-inner{max-width:44ch;margin:0 auto;}
+  .cta h2{color:var(--paper);font-size:clamp(2.1rem,4vw,3.4rem);letter-spacing:-.025em;}
+  .cta h2 .rl{color:var(--redline);}
+  .cta p{color:var(--steel-lt);font-size:1.1rem;margin:22px auto 34px;max-width:46ch;}
+  .cta .email{display:block;margin-top:26px;font-family:var(--font-mono);font-size:.85rem;letter-spacing:.06em;color:var(--steel-lt);}
+  .cta .email a{color:var(--amber);}
+
+  /* ---------- Footer ---------- */
+  footer{background:#101217;color:var(--steel-lt);padding:56px 0 40px;border-top:1px solid var(--ink-3);}
+  .foot-top{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:flex-start;}
+  .foot-links{display:flex;gap:28px;flex-wrap:wrap;font-family:var(--font-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;}
+  .foot-links a:hover{color:var(--paper);}
+  .foot-meta{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;margin-top:40px;padding-top:22px;border-top:1px solid var(--ink-3);font-family:var(--font-mono);font-size:.72rem;letter-spacing:.05em;}
+  .foot-draft{color:var(--redline);opacity:.85;}
+
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:920px){
+    .hero-grid{grid-template-columns:1fr;gap:36px;}
+    .gauge-wrap{max-width:380px;order:2;}
+    .hero-copy{order:1;}
+    .guide-inner{grid-template-columns:1fr;}
+    .guide-mark{order:-1;max-width:200px;}
+    .cards,.team{grid-template-columns:1fr 1fr;}
+    .stressors{grid-template-columns:1fr;}
+  }
+  @media (max-width:760px){
+    .nav-links{display:none;}
+    .nav-cta .btn{padding:.55em .95em;}
+  }
+  @media (max-width:600px){
+    .cards,.team{grid-template-columns:1fr;}
+    .step{grid-template-columns:1fr;gap:8px;}
+    .step .sidx{font-size:2.2rem;}
+    .foot-top{flex-direction:column;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;animation:none !important;}
+    .reveal{opacity:1;transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Horsepower Retail Advisory home">
+      <!-- REPLACE: Oval Tach badge — swap this SVG for the finalized logo -->
+      <svg class="badge" viewBox="0 0 88 68" role="img" aria-label="Horsepower Oval Tach badge">
+        <ellipse cx="44" cy="34" rx="41" ry="31" fill="none" stroke="#F4F4F2" stroke-width="2.4"/>
+        <path d="M24 46 A22 22 0 0 1 64 46" fill="none" stroke="rgba(244,244,242,.4)" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M55.6 30.2 A22 22 0 0 1 64 46" fill="none" stroke="#E1341A" stroke-width="3" stroke-linecap="round"/>
+        <line x1="44" y1="38" x2="57" y2="25" stroke="#F4F4F2" stroke-width="2.6" stroke-linecap="round"/>
+        <circle cx="44" cy="38" r="3.6" fill="#E1341A"/>
+      </svg>
+      <span class="brand-txt">
+        <span class="b1">HORSEPOWER</span>
+        <span class="b2">Retail&nbsp;Advisory</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#problem">Why now</a>
+      <a href="#practice">Practice</a>
+      <a href="#how">How we work</a>
+      <a href="#team">Partners</a>
+    </div>
+    <div class="nav-cta">
+      <!-- REPLACE: contact email -->
+      <a class="btn btn-primary" href="mailto:hello@horsepowerretail.com?subject=Intro%20conversation">Book an intro <span class="arw">&rarr;</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Retail strategy &amp; advisory</span>
+      <h1>Find the <span class="rl">horsepower</span> in your retail business.</h1>
+      <p class="lead">We help retailers and consumer brands turn hard-won operating experience into measurable performance — across merchandising, channel strategy, and the P&amp;L. Built by operators who've run the store, carried the number, and sat on both sides of the buyer's desk.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:hello@horsepowerretail.com?subject=Intro%20conversation">Book an intro conversation <span class="arw">&rarr;</span></a>
+        <a class="btn btn-ghost-lt" href="#how">See how we work</a>
+      </div>
+    </div>
+
+    <div class="gauge-wrap">
+      <svg id="tach" viewBox="0 0 400 400" role="img" aria-label="Tachometer illustration with the needle in the redline">
+        <!-- outer bezel -->
+        <circle cx="200" cy="200" r="176" fill="none" stroke="rgba(244,244,242,.10)" stroke-width="2"/>
+        <circle cx="200" cy="200" r="168" fill="rgba(255,255,255,.015)" stroke="rgba(244,244,242,.06)" stroke-width="1"/>
+        <!-- track arc (135deg -> 405deg) -->
+        <path d="M 93.93 306.07 A 150 150 0 1 1 306.07 306.07" fill="none" stroke="rgba(244,244,242,.18)" stroke-width="4" stroke-linecap="round"/>
+        <!-- redline arc (t 0.8 -> 1.0) -->
+        <path d="M 348.15 176.54 A 150 150 0 0 1 306.07 306.07" fill="none" stroke="#E1341A" stroke-width="6" stroke-linecap="round" opacity="0.95"/>
+        <!-- ticks + numerals injected here -->
+        <g id="tach-ticks"></g>
+        <!-- needle (base orientation: points +x; rotated by JS) -->
+        <g id="tach-needle">
+          <polygon points="315,200 210,195.5 191,198.5 191,201.5 210,204.5" fill="#F4F4F2"/>
+        </g>
+        <!-- hub (static, on top) -->
+        <circle cx="200" cy="200" r="15" fill="#E1341A"/>
+        <circle cx="200" cy="200" r="6.5" fill="#14161C"/>
+      </svg>
+      <div class="gauge-caption">
+        <span class="read"><span id="tach-readout">0.0</span></span>
+        <span>&times;1000&nbsp;RPM</span>
+        <span class="redtag">Redline</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ PROBLEM / WHY NOW ============ -->
+<section class="section" id="problem">
+  <div class="wrap">
+    <div class="problem-head reveal">
+      <span class="eyebrow">Why now</span>
+      <h2 class="h2">The retail engine is harder to run than it used to be.</h2>
+    </div>
+    <div class="stressors reveal">
+      <div class="stressor">
+        <span class="n">01</span>
+        <h3>Margin under pressure</h3>
+        <p>Cost, markdown, and vendor-funding math get tighter every season — and the levers that used to work don't always move the number anymore.</p>
+      </div>
+      <div class="stressor">
+        <span class="n">02</span>
+        <h3>Too many channels</h3>
+        <p>Wholesale, specialty, DTC, and marketplace each pull in a different direction. Winning in one can quietly cost you in another.</p>
+      </div>
+      <div class="stressor">
+        <span class="n">03</span>
+        <h3>Strategy stalls at the floor</h3>
+        <p>The deck looks great in the boardroom. The gap opens up between the plan and what actually happens in the store and in the numbers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRACTICE ============ -->
+<section class="section practice" id="practice">
+  <div class="wrap">
+    <div class="practice-head">
+      <div class="reveal">
+        <span class="eyebrow">The practice</span>
+        <h2 class="h2">Where we help you find performance.</h2>
+      </div>
+      <p class="lead reveal">A focused set of engagements — grounded in decades of running the business, not just advising on it.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <span class="cno">P—01</span>
+        <h3>Retail &amp; channel strategy</h3>
+        <p>Positioning across wholesale, specialty, DTC, and marketplace — deciding where to compete and how to actually win there.</p>
+      </div>
+      <div class="card reveal">
+        <span class="cno">P—02</span>
+        <h3>Merchandising &amp; vendor economics</h3>
+        <p>Assortment, pricing, and vendor-funding strategy — the math behind margin, markdowns, and where the money really is.</p>
+      </div>
+      <div class="card reveal">
+        <span class="cno">P—03</span>
+        <h3>Wholesale &amp; key-account growth</h3>
+        <p>Line reviews, account planning, and sell-through discipline for national and specialty retailers alike.</p>
+      </div>
+      <div class="card reveal">
+        <span class="cno">P—04</span>
+        <h3>Field &amp; marketing organization</h3>
+        <p>Designing and standing up the teams and systems that turn strategy into consistent execution on the floor.</p>
+      </div>
+      <div class="card reveal">
+        <span class="cno">P—05</span>
+        <h3>Retail math &amp; inventory</h3>
+        <p>Cost vs. retail (RIM) methods, inventory productivity, and turning the data you already have into decisions.</p>
+      </div>
+      <div class="card reveal">
+        <span class="cno">P—06</span>
+        <h3>AI-enabled sales operations</h3>
+        <p>Building sales-ops capability that compounds — using AI as a genuine operating advantage, not a science project.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW WE WORK ============ -->
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="how-head reveal">
+      <span class="eyebrow">How we work</span>
+      <h2 class="h2">Read the gauges. Tune the plan. Drive to the redline.</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="sidx">01</div>
+        <div class="sbody">
+          <h3><span class="sub">Diagnostic</span>Read the gauges</h3>
+          <p>We start with a clear-eyed look at the business, the numbers, and the channels — what's genuinely driving performance and what's holding it back. No assumptions, just what the instruments say.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="sidx">02</div>
+        <div class="sbody">
+          <h3><span class="sub">Strategy</span>Tune the plan</h3>
+          <p>We build a prioritized plan tied directly to the P&amp;L, with the trade-offs made explicit and the sequencing clear. You'll know what to do first, why, and what it's worth.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="sidx">03</div>
+        <div class="sbody">
+          <h3><span class="sub">Execution</span>Drive to the redline</h3>
+          <p>We stay in it with you through execution — because a plan only counts when it shows up on the floor and in the numbers. Operators helping operators get it done.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUIDE / AUTHORITY ============ -->
+<section class="section guide">
+  <div class="wrap guide-inner">
+    <div class="reveal">
+      <span class="eyebrow">Why Horsepower</span>
+      <h2>Operators, not slideware.</h2>
+      <p>We've run the store, carried the number, and sat on both sides of the buyer's desk. Horsepower is built by people who've owned retail P&amp;Ls and built the organizations that deliver them — not consultants who've only studied them.</p>
+      <!-- REPLACE: swap this line for real, verifiable proof points (years, formats, categories, named results you're comfortable publishing) -->
+      <p class="note">// Add proof points here — combined experience, formats, categories, results.</p>
+    </div>
+    <svg class="guide-mark" viewBox="0 0 260 200" role="img" aria-label="Oval Tach mark">
+      <ellipse cx="130" cy="100" rx="122" ry="92" fill="none" stroke="rgba(244,244,242,.55)" stroke-width="3"/>
+      <path d="M 62 138 A 68 68 0 0 1 198 138" fill="none" stroke="rgba(244,244,242,.4)" stroke-width="3.4" stroke-linecap="round"/>
+      <path d="M 174 84 A 68 68 0 0 1 198 138" fill="none" stroke="#F4F4F2" stroke-width="5" stroke-linecap="round"/>
+      <line x1="130" y1="112" x2="172" y2="70" stroke="#F4F4F2" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="130" cy="112" r="7" fill="#F4F4F2"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="section" id="team">
+  <div class="wrap">
+    <div class="team-head reveal">
+      <span class="eyebrow">The partners</span>
+      <h2 class="h2">Three operators. One firm. Equal partners.</h2>
+    </div>
+    <div class="team">
+      <div class="member reveal">
+        <div class="monogram">MS</div>
+        <h3>Matt Shultz</h3>
+        <div class="role">Founding Partner</div>
+        <p>Retail operator with leadership experience across big-box home improvement, specialty, and consumer brands — P&amp;L ownership, wholesale channel strategy, and building field organizations at scale.</p>
+      </div>
+      <div class="member reveal">
+        <div class="monogram">TP</div>
+        <h3>Tim Pardue</h3>
+        <div class="role">Founding Partner</div>
+        <!-- REPLACE: Tim Pardue bio -->
+        <p class="ph">Background to be added — Tim's operating experience and areas of focus.</p>
+      </div>
+      <div class="member reveal">
+        <div class="monogram">JM</div>
+        <h3>John Marshall</h3>
+        <div class="role">Founding Partner</div>
+        <!-- REPLACE: John Marshall bio -->
+        <p class="ph">Background to be added — John's operating experience and areas of focus.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="section cta">
+  <div class="wrap cta-inner">
+    <span class="eyebrow" style="justify-content:center;">Get in touch</span>
+    <h2>Ready to find your <span class="rl">horsepower</span>?</h2>
+    <p>Tell us where the retail engine is bogging down. We'll tell you where the performance is.</p>
+    <!-- REPLACE: contact email -->
+    <a class="btn btn-primary" href="mailto:hello@horsepowerretail.com?subject=Intro%20conversation">Book an intro conversation <span class="arw">&rarr;</span></a>
+    <span class="email">or email <a href="mailto:hello@horsepowerretail.com">hello@horsepowerretail.com</a></span>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="brand" href="#top" aria-label="Horsepower Retail Advisory home" style="opacity:.95;">
+        <svg class="badge" viewBox="0 0 88 68" aria-hidden="true">
+          <ellipse cx="44" cy="34" rx="41" ry="31" fill="none" stroke="#9CA1A9" stroke-width="2.4"/>
+          <path d="M24 46 A22 22 0 0 1 64 46" fill="none" stroke="rgba(156,161,169,.4)" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M55.6 30.2 A22 22 0 0 1 64 46" fill="none" stroke="#E1341A" stroke-width="3" stroke-linecap="round"/>
+          <line x1="44" y1="38" x2="57" y2="25" stroke="#9CA1A9" stroke-width="2.6" stroke-linecap="round"/>
+          <circle cx="44" cy="38" r="3.6" fill="#E1341A"/>
+        </svg>
+        <span class="brand-txt">
+          <span class="b1" style="color:#F4F4F2;">HORSEPOWER</span>
+          <span class="b2">Retail&nbsp;Advisory</span>
+        </span>
+      </a>
+      <div class="foot-links">
+        <a href="#problem">Why now</a>
+        <a href="#practice">Practice</a>
+        <a href="#how">How we work</a>
+        <a href="#team">Partners</a>
+        <!-- REPLACE: contact email -->
+        <a href="mailto:hello@horsepowerretail.com">Contact</a>
+      </div>
+    </div>
+    <div class="foot-meta">
+      <span>&copy; 2026 Horsepower Retail Advisory, LLC.</span>
+      <!-- REPLACE / confirm location if you want it shown -->
+      <span>Northwest Florida &mdash; 30A</span>
+      <span class="foot-draft">// Working draft &mdash; replace placeholder content before launch</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var NS = "http://www.w3.org/2000/svg";
+  var cx = 200, cy = 200, START = 135, SWEEP = 270, R = 150;
+
+  function pt(r, deg){
+    var a = deg * Math.PI / 180;
+    return [cx + r * Math.cos(a), cy + r * Math.sin(a)];
+  }
+
+  // ---- build ticks + numerals ----
+  var ticks = document.getElementById("tach-ticks");
+  if (ticks){
+    for (var i = 0; i <= 16; i++){
+      var t = i / 16;
+      var deg = START + t * SWEEP;
+      var major = (i % 2 === 0);
+      var inRed = t >= 0.8 - 0.001;
+      var rOut = R - 5;
+      var rIn = major ? (R - 22) : (R - 14);
+      var p1 = pt(rOut, deg), p2 = pt(rIn, deg);
+      var ln = document.createElementNS(NS, "line");
+      ln.setAttribute("x1", p1[0].toFixed(2)); ln.setAttribute("y1", p1[1].toFixed(2));
+      ln.setAttribute("x2", p2[0].toFixed(2)); ln.setAttribute("y2", p2[1].toFixed(2));
+      ln.setAttribute("stroke", inRed ? "#E1341A" : "rgba(244,244,242,.55)");
+      ln.setAttribute("stroke-width", major ? "2.4" : "1.3");
+      ln.setAttribute("stroke-linecap", "round");
+      ticks.appendChild(ln);
+      if (major){
+        var num = i / 2;
+        var np = pt(R - 40, deg);
+        var tx = document.createElementNS(NS, "text");
+        tx.setAttribute("x", np[0].toFixed(2));
+        tx.setAttribute("y", (np[1] + 5).toFixed(2));
+        tx.setAttribute("text-anchor", "middle");
+        tx.setAttribute("class", "tach-num");
+        tx.setAttribute("fill", num >= 7 ? "#E1341A" : "rgba(244,244,242,.72)");
+        tx.textContent = num;
+        ticks.appendChild(tx);
+      }
+    }
+  }
+
+  // ---- needle sweep ----
+  var needle = document.getElementById("tach-needle");
+  var readout = document.getElementById("tach-readout");
+  var target = 0.85;
+
+  function setNeedle(t){
+    var deg = START + t * SWEEP;
+    if (needle) needle.setAttribute("transform", "rotate(" + deg.toFixed(2) + " " + cx + " " + cy + ")");
+    if (readout) readout.textContent = (t * 8).toFixed(1);
+  }
+
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reduce || !needle){
+    setNeedle(target);
+  } else {
+    setNeedle(0);
+    var dur = 1650, startTs = null;
+    var easeOut = function(p){ return 1 - Math.pow(1 - p, 3); };
+    function frame(ts){
+      if (!startTs) startTs = ts;
+      var p = Math.min((ts - startTs) / dur, 1);
+      setNeedle(target * easeOut(p));
+      if (p < 1){ requestAnimationFrame(frame); }
+      else {
+        // gentle settle
+        var s = null, sd = 560, amp = 0.028;
+        function settle(t2){
+          if (!s) s = t2;
+          var q = Math.min((t2 - s) / sd, 1);
+          var w = Math.sin(q * Math.PI * 2) * amp * (1 - q);
+          setNeedle(target + w);
+          if (q < 1){ requestAnimationFrame(settle); } else { setNeedle(target); }
+        }
+        requestAnimationFrame(settle);
+      }
+    }
+    // start the sweep shortly after load so it's noticed
+    setTimeout(function(){ requestAnimationFrame(frame); }, 260);
+  }
+
+  // ---- nav background on scroll ----
+  var nav = document.getElementById("nav");
+  function onScroll(){
+    if (window.scrollY > 40){ nav.classList.add("scrolled"); }
+    else { nav.classList.remove("scrolled"); }
+  }
+  onScroll();
+  var ticking = false;
+  window.addEventListener("scroll", function(){
+    if (!ticking){
+      window.requestAnimationFrame(function(){ onScroll(); ticking = false; });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  // ---- scroll reveal ----
+  var reveals = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, {threshold:0.12, rootMargin:"0px 0px -8% 0px"});
+    reveals.forEach(function(el){ io.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add("in"); });
+  }
+})();
+</script>
+</body>
+</html>
